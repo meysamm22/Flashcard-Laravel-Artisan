@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class flashcardActions extends Command
+class FlashcardActionsMenu extends Command
 {
     /**
      * The name and signature of the console command.
@@ -43,5 +43,11 @@ class flashcardActions extends Command
         );
 
 
+        switch ($selectedMenuItem){
+            case __("flashcard.menu.create"):
+                CommandHelper::clearConsole();
+                $this->call("flashcard:create");
+                break;
+        }
     }
 }

@@ -10,5 +10,10 @@ return [
         'reset' => 'Reset',
         'exit' => 'Exit',
     ],
+    'create' => [
+        'question' => "Enter the question: ",
+        'answer' => "Enter the answer :",
+        'created' => "The flashcard created."
+    ]
 
 ];
