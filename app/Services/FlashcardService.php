@@ -24,7 +24,7 @@ class FlashcardService
     }
 
     public function list(): array{
-        return Flashcard::all()->toArray();
+        return Flashcard::select('question','answer')->get()->toArray();
     }
 
     /**

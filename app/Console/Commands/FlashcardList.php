@@ -41,7 +41,7 @@ class FlashcardList extends Command
     public function handle()
     {
         $this->table(
-            ['ID','Question', 'Answer', 'Created Date', 'Updated Date'],
+            ['Question', 'Answer'],
             $this->flashcardService->list()
         );
 
