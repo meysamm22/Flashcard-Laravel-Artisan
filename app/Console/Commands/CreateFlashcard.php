@@ -10,7 +10,6 @@ class CreateFlashcard extends Command
 {
 
     /**
-     * The user repository implementation.
      *
      * @var FlashcardService
      */

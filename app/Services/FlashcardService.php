@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use App\Models\Flashcard;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
@@ -20,6 +21,10 @@ class FlashcardService
             'answer' => $input['answer']
         ]);
 
+    }
+
+    public function list(): array{
+        return Flashcard::all()->toArray();
     }
 
     /**
