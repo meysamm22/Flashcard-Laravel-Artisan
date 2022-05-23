@@ -6,7 +6,7 @@ namespace App\Services;
 
 use App\Models\Flashcard;
 use Illuminate\Support\Facades\Validator;
-use RuntimeException;
+use Illuminate\Validation\ValidationException;
 
 class FlashcardService
 {
@@ -33,6 +33,6 @@ class FlashcardService
             'answer' => 'required',
         ];
         $validator = Validator::make($input, $rules);
-        throw_if($validator->fails(), new RuntimeException($validator->getMessageBag()));
+        throw_if($validator->fails(), new ValidationException($validator));
     }
 }

@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use App\Services\FlashcardService;
 use Illuminate\Console\Command;
-use Illuminate\Console\OutputStyle;
+use Illuminate\Validation\ValidationException;
 
 class CreateFlashcard extends Command
 {
@@ -43,7 +43,7 @@ class CreateFlashcard extends Command
         try {
             $this->flashcardService->create($input);
             $this->info(__("flashcard.create.created"));
-        }catch (\RuntimeException $e){
+        }catch (ValidationException $e){
             $this->error($e->getMessage());
         }
 
