@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Services\FlashcardService;
 use Illuminate\Console\Command;
+use Illuminate\Console\OutputStyle;
 
 class CreateFlashcard extends Command
 {
@@ -45,6 +46,7 @@ class CreateFlashcard extends Command
         }catch (\RuntimeException $e){
             $this->error($e->getMessage());
         }
+
         $this->call("flashcard:interactive");
     }
 
