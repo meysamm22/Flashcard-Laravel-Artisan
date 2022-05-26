@@ -2,9 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Flashcard;
-use App\Services\Exceptions\NotFoundException;
-use App\Services\Exceptions\PracticeAllowanceException;
 use App\Services\FlashcardService;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Helper\Table;

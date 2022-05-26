@@ -8,7 +8,6 @@ use App\Models\Flashcard;
 use App\Models\Practice;
 use App\Services\Exceptions\NotFoundException;
 use App\Services\Exceptions\PracticeAllowanceException;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
@@ -98,11 +97,33 @@ class FlashcardService
         return $status;
     }
 
-    public function getPercentageOfCompletion(){
+    public function getPercentageOfCompletion(): float
+    {
         $flashcards = $this->listWithPracticeStatus();
         $percentage = count(array_filter($flashcards, function($v) { return $v['Status'] == __("flashcard.practice.status.correct"); })) / count($flashcards) * 100;
-        return  round($percentage);
+        return round($percentage);
     }
+
+    public function stats(): array{
+        return [
+          "Questions" => $this->flashcardCount(),
+          "Answered" => $this->answeredQuestionPercentage(),
+          "Correct" => $this->getPercentageOfCompletion()
+        ];
+    }
+
+    private function flashcardCount(): int{
+        return Flashcard::all()->count();
+    }
+
+    private function answeredQuestionPercentage(): float{
+        $flashcards = $this->listWithPracticeStatus();
+        $percentage = count(array_filter($flashcards, function($v) {
+            return ($v['Status'] != __("flashcard.practice.status.not_answered"));
+        })) / count($flashcards) * 100;
+        return round($percentage);
+    }
+
     /**
      * @param $input
      * @throws \Throwable
