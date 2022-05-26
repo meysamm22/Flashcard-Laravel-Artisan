@@ -26,7 +26,8 @@ return [
         'selected_question' => "The selected question is: ",
         'not_found_question' => "The question is not found, press any key to return to main menu",
         'cannot_answer' => "You cannot answer correct answered questions, press any key to return to main menu",
-        'answered' => 'Your answer is: '
+        'answered' => 'Your answer is: ',
+        'percentage_comp' => ' is completed.'
     ]
 
 ];

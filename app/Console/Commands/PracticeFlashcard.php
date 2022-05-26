@@ -7,6 +7,7 @@ use App\Services\Exceptions\NotFoundException;
 use App\Services\Exceptions\PracticeAllowanceException;
 use App\Services\FlashcardService;
 use Illuminate\Console\Command;
+use Symfony\Component\Console\Helper\Table;
 
 class PracticeFlashcard extends Command{
 
@@ -44,12 +45,12 @@ class PracticeFlashcard extends Command{
      */
     public function handle()
     {
-        $this->table(
-            ['ID','Question','Status'],
-            $this->flashcardService->listWithPracticeStatus()
-        );
+        $table = new Table($this->output);
+        $table->setHeaders(['ID','Question','Status']);
+        $table->addRows($this->flashcardService->listWithPracticeStatus());
+        $table->setFooterTitle("%".$this->flashcardService->getPercentageOfCompletion().__("flashcard.practice.percentage_comp"));
+        $table->render();
         $questionId = $this->ask(__("flashcard.practice.choose_question"));
-
         try {
             $flashcard = $this->flashcardService->fetchFlashcardForPractice($questionId);
             $this->info(__("flashcard.practice.selected_question").$flashcard->question);

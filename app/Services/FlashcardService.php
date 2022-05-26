@@ -98,6 +98,11 @@ class FlashcardService
         return $status;
     }
 
+    public function getPercentageOfCompletion(){
+        $flashcards = $this->listWithPracticeStatus();
+        $percentage = count(array_filter($flashcards, function($v) { return $v['Status'] == __("flashcard.practice.status.correct"); })) / count($flashcards) * 100;
+        return  round($percentage);
+    }
     /**
      * @param $input
      * @throws \Throwable
