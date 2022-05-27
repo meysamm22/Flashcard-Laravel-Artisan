@@ -7,11 +7,7 @@ use Illuminate\Console\Command;
 
 class FlashcardList extends Command
 {
-    /**
-     *
-     * @var FlashcardService
-     */
-    private $flashcardService;
+    use BaseFlashcardCommand;
 
     /**
      * The name and signature of the console command.
@@ -27,11 +23,6 @@ class FlashcardList extends Command
      */
     protected $description = 'The list of all flashcards will be shown by this command';
 
-    public function __construct(FlashcardService $flashcardService)
-    {
-        parent::__construct();
-        $this->flashcardService = $flashcardService;
-    }
 
     /**
      * Execute the console command.

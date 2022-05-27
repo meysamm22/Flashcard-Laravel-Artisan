@@ -2,18 +2,12 @@
 
 namespace App\Console\Commands;
 
-use App\Services\FlashcardService;
 use Illuminate\Console\Command;
 use Illuminate\Validation\ValidationException;
 
 class CreateFlashcard extends Command
 {
-
-    /**
-     *
-     * @var FlashcardService
-     */
-    private $flashcardService;
+    use BaseFlashcardCommand;
 
     /**
      * The name and signature of the console command.
@@ -49,9 +43,4 @@ class CreateFlashcard extends Command
         $this->call("flashcard:interactive");
     }
 
-    public function __construct(FlashcardService $flashcardService)
-    {
-        parent::__construct();
-        $this->flashcardService = $flashcardService;
-    }
 }

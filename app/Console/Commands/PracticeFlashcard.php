@@ -2,24 +2,13 @@
 
 namespace App\Console\Commands;
 
-use App\Services\FlashcardService;
+
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Helper\Table;
 
-class PracticeFlashcard extends Command{
+class PracticeFlashcard extends Command {
 
-
-    /**
-     *
-     * @var FlashcardService
-     */
-    private $flashcardService;
-
-    public function __construct(FlashcardService $flashcardService)
-    {
-        parent::__construct();
-        $this->flashcardService = $flashcardService;
-    }
+    use BaseFlashcardCommand;
 
     /**
      * The name and signature of the console command.
@@ -48,6 +37,9 @@ class PracticeFlashcard extends Command{
         $table->setFooterTitle("%".$this->flashcardService->getPercentageOfCompletion().__("flashcard.practice.percentage_comp"));
         $table->render();
         $questionId = $this->ask(__("flashcard.practice.choose_question"));
+        if ($questionId == 0)
+            $this->call("flashcard:interactive");
+
         try {
             $flashcard = $this->flashcardService->fetchFlashcardForPractice($questionId);
             $this->info(__("flashcard.practice.selected_question").$flashcard->question);

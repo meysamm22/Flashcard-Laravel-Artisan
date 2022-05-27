@@ -21,7 +21,7 @@ return [
             'incorrect' => 'InCorrect',
             'correct' => 'Correct',
         ],
-        'choose_question' => "Please choose a question",
+        'choose_question' => "Please choose a question id, 0 for return to menu",
         'type_answer' => "Please type the answer",
         'selected_question' => "The selected question is: ",
         'not_found_question' => "The question is not found, press any key to return",

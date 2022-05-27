@@ -7,6 +7,7 @@ use Illuminate\Console\Command;
 
 class FlashcardResetPractice extends Command
 {
+    use BaseFlashcardCommand;
     /**
      * The name and signature of the console command.
      *
@@ -20,17 +21,6 @@ class FlashcardResetPractice extends Command
      * @var string
      */
     protected $description = 'This command reset all of the practices of a user';
-    /**
-     *
-     * @var FlashcardService
-     */
-    private $flashcardService;
-
-    public function __construct(FlashcardService $flashcardService)
-    {
-        parent::__construct();
-        $this->flashcardService = $flashcardService;
-    }
 
     /**
      * Execute the console command.

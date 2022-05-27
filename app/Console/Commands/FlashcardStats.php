@@ -2,11 +2,12 @@
 
 namespace App\Console\Commands;
 
-use App\Services\FlashcardService;
 use Illuminate\Console\Command;
 
 class FlashcardStats extends Command
 {
+    use BaseFlashcardCommand;
+
     /**
      * The name and signature of the console command.
      *
@@ -21,17 +22,6 @@ class FlashcardStats extends Command
      */
     protected $description = 'Statistics of flashcards';
 
-    /**
-     *
-     * @var FlashcardService
-     */
-    private $flashcardService;
-
-    public function __construct(FlashcardService $flashcardService)
-    {
-        parent::__construct();
-        $this->flashcardService = $flashcardService;
-    }
     /**
      * Execute the console command.
      *
