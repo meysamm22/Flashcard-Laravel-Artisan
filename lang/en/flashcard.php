@@ -2,7 +2,7 @@
 
 return [
     'menu' => [
-        'welcome' => 'Welcome to the Flashcard app, please select an action:',
+        'welcome' => 'Welcome to the Flashcard app, please select an action',
         'create' => 'Create a flashcard',
         'list' => 'List all flashcards',
         'practice' => 'Practice',
@@ -11,8 +11,8 @@ return [
         'exit' => 'Exit',
     ],
     'create' => [
-        'question' => "Enter the question: ",
-        'answer' => "Enter the answer :",
+        'question' => "Enter the question, 0 for return to menu ",
+        'answer' => "Enter the answer",
         'created' => "The flashcard created."
     ],
     'practice' => [
@@ -24,8 +24,8 @@ return [
         'choose_question' => "Please choose a question id, 0 for return to menu",
         'type_answer' => "Please type the answer",
         'selected_question' => "The selected question is: ",
-        'not_found_question' => "The question is not found, press any key to return",
-        'cannot_answer' => "You cannot answer correct answered questions, press any key to return",
+        'not_found_question' => "The question is not found",
+        'cannot_answer' => "You cannot answer correct answered questions",
         'answered' => 'Your answer is: ',
         'percentage_comp' => ' is completed.'
     ],

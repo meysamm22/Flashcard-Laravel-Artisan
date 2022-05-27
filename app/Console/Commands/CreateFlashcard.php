@@ -32,7 +32,13 @@ class CreateFlashcard extends Command
     public function handle()
     {
         $input['question'] = $this->ask(__("flashcard.create.question"));
+        if ($input['question'] == 0)
+        {
+            $this->call("flashcard:interactive");
+            return 0;
+        }
         $input['answer'] = $this->ask(__("flashcard.create.answer"));
+
         try {
             $this->flashcardService->create($input);
             $this->info(__("flashcard.create.created"));
@@ -40,7 +46,6 @@ class CreateFlashcard extends Command
             $this->error($e->getMessage());
         }
 
-        $this->call("flashcard:interactive");
     }
 
 }

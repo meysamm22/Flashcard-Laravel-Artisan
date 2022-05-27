@@ -35,8 +35,9 @@ class FlashcardList extends Command
             ['Question', 'Answer'],
             $this->flashcardService->list()
         );
-
+        $this->ask(__("flashcard.return"));
         $this->call("flashcard:interactive");
 
+        return 0;
     }
 }

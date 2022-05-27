@@ -37,8 +37,10 @@ class PracticeFlashcard extends Command {
         $table->setFooterTitle("%".$this->flashcardService->getPercentageOfCompletion().__("flashcard.practice.percentage_comp"));
         $table->render();
         $questionId = $this->ask(__("flashcard.practice.choose_question"));
-        if ($questionId == 0)
+        if ($questionId == 0){
             $this->call("flashcard:interactive");
+            return 0;
+        }
 
         try {
             $flashcard = $this->flashcardService->fetchFlashcardForPractice($questionId);
@@ -47,11 +49,13 @@ class PracticeFlashcard extends Command {
             $status = $this->flashcardService->answerQuestion($flashcard, $answer);
             $this->info(__('flashcard.practice.answered') . __('flashcard.practice.status.'.$status));
             $this->call('flashcard:practice');
+            return 0;
 
         }catch (\Exception $e){
             $this->error($e->getMessage());
-            $this->ask(__("flashcard.practice.not_found_question"));
+            $this->ask(__("flashcard.return"));
             $this->call("flashcard:practice");
+            return 0;
         }
 
 

@@ -17,11 +17,12 @@ class FlashcardListCommandTest extends TestCase
     public function test_flashcard_list()
     {
        Flashcard::create([
-            'question' => 'Q1',
-            'answer' => 'A1'
+            'question' => FlashcardFixtures::QUESTION,
+            'answer' => FlashcardFixtures::ANSWER
         ]);
          $this->artisan('flashcard:list')
-             ->expectsTable(['Question', 'Answer'], [['Q1', 'A1']])
+             ->expectsTable(['Question', 'Answer'], [[FlashcardFixtures::QUESTION, FlashcardFixtures::ANSWER]])
+             ->expectsQuestion(__('flashcard.return'), 0)
              ->expectsQuestion(__('flashcard.menu.welcome'), 5)
             ->assertExitCode(0);
 

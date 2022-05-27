@@ -21,7 +21,6 @@ class CreateFlashcardCommandTest extends TestCase
             ->expectsQuestion(__("flashcard.create.question"), 'Q1')
             ->expectsQuestion(__("flashcard.create.answer"), 'PHP')
             ->expectsOutputToContain(__('flashcard.create.created'))
-             ->expectsQuestion(__('flashcard.menu.welcome'), 0)
             ->assertExitCode(0);
 
     }
