@@ -146,5 +146,57 @@ class FlashcardServiceTest extends TestCase
         $this->assertEquals(FlashcardService::INCORRECT_STATUS, $result);
     }
 
+    /**
+     *
+     * @return void
+     * @throws \Throwable
+     */
+    public function test_flashcardCount_store_2_question_should_return_2()
+    {
+        FlashcardFixtures::createNotAnsweredFlashcard();
+        FlashcardFixtures::createNotAnsweredFlashcard();
+
+        $reflection = new \ReflectionClass(get_class($this->flashcardService));
+        $method = $reflection->getMethod("flashcardCount");
+        $method->setAccessible(true);
+        $count = $method->invokeArgs($this->flashcardService, []);
+        $this->assertEquals(2, $count);
+    }
+
+    /**
+     *
+     * @return void
+     * @throws \Throwable
+     */
+    public function test_getPercentageOfCompletion_store_2_question_should_return_50_percentage()
+    {
+        FlashcardFixtures::createNotAnsweredFlashcard();
+        FlashcardFixtures::createCorrectAnsweredFlashcard();
+
+        $reflection = new \ReflectionClass(get_class($this->flashcardService));
+        $method = $reflection->getMethod("answeredQuestionPercentage");
+        $method->setAccessible(true);
+        $count = $method->invokeArgs($this->flashcardService, []);
+        $this->assertEquals(50, $count);
+    }
+
+    /**
+     *
+     * @return void
+     * @throws \Throwable
+     */
+    public function test_getPercentageOfCompletion_store_2_question_should_return_33_percentage()
+    {
+        FlashcardFixtures::createNotAnsweredFlashcard();
+        FlashcardFixtures::createIncorrectAnsweredFlashcard();
+        FlashcardFixtures::createCorrectAnsweredFlashcard();
+
+        $reflection = new \ReflectionClass(get_class($this->flashcardService));
+        $method = $reflection->getMethod("getPercentageOfCompletion");
+        $method->setAccessible(true);
+        $count = $method->invokeArgs($this->flashcardService, []);
+        $this->assertEquals(33, $count);
+    }
+
 
 }
