@@ -20,7 +20,7 @@ class FlashcardService
     public const NOT_ANSWERED_STATUS = "not_answered";
 
     // TODO:: based-on requirment of assignment, User Auth will be implemented in the future.
-    private const USER_ID = 1;
+    public const USER_ID = 1;
 
     /**
      * @throws \Throwable
