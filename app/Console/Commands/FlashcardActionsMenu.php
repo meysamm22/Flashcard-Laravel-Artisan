@@ -60,6 +60,10 @@ class FlashcardActionsMenu extends Command
                 CommandHelper::clearConsole();
                 $this->call("flashcard:stats");
                 break;
+            case __("flashcard.menu.reset"):
+                CommandHelper::clearConsole();
+                $this->call("flashcard:reset");
+                break;
         }
     }
 }

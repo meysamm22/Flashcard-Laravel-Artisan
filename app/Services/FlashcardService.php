@@ -112,6 +112,10 @@ class FlashcardService
         ];
     }
 
+    public function reset(): void{
+        Practice::where("user_id", self::USER_ID)->delete();
+    }
+
     private function flashcardCount(): int{
         return Flashcard::all()->count();
     }

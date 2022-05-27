@@ -34,7 +34,11 @@ return [
         'answered' => "Answered questions: %",
         'correct' => "Correct answers: %",
     ],
-    'return' => 'Press any key to return'
+    'return' => 'Press any key to return',
+    'reset' => [
+        'confirm' => 'Are you sure to reset all of you practices?',
+        'deleted' => 'All your practices have been deleted!'
+    ]
 
 
 ];
