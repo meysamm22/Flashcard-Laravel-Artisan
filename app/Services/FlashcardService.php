@@ -68,7 +68,7 @@ class FlashcardService
         $flashcard = Flashcard::find($id);
         throw_if($flashcard == null, new NotFoundException(__("flashcard.practice.not_found_question")));
         $practice = $flashcard->practices()->where('user_id', self::USER_ID)->get()->first();
-        throw_if($practice != null && $practice->status == self::CORRECT_STATUS, new PracticeAllowanceException(__("flashcard.practice.cannot_answer")));
+        throw_if($practice?->status == self::CORRECT_STATUS, new PracticeAllowanceException(__("flashcard.practice.cannot_answer")));
 
         return $flashcard;
     }
