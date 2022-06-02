@@ -1,7 +1,6 @@
-## Meysam Zarei Home Assignment
+## Simple Flashcard App with Laravel Command
 
-First of all, it is my pleasure that I was selected for this step of the interview process.
-I have accomplished this task with considering the below concepts:
+These concepts are considered in this app:
 
 - A separated service has been considered for flashcards to inject it in different layers
 - Variety of automation tests have been written (some feature tests for flashcard service and also for command classes)
